@@ -1,5 +1,5 @@
 export interface EpisodesItem { 
-    id: boolean;
+    id: number;
     name: string;
     air_date: string;
     episodes: string;

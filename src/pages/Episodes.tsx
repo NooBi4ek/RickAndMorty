@@ -1,23 +1,41 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import MainLayout from "../layout/MainLayout";
-import { getEpisodesData } from "../store/reducers/episodesReducer";
 import { useEffect } from "react";
 import { getEpisodesDataServer } from "../store/actions/episodesAction";
+import { Box, Pagination, Stack } from "@mui/material";
+import EpisodesInfo from "../components/EpisodesInfo";
 
 const Episodes = () => {
   const dispatch = useDispatch();
-  const episodesData = useSelector(getEpisodesData);
+
+  const handleChange = (event: any) => {
+    dispatch(getEpisodesDataServer(event.target.textContent));
+  };
 
   useEffect(() => {
-    dispatch(getEpisodesDataServer());
+    dispatch(getEpisodesDataServer("1"));
   }, []);
 
   return (
     <>
       <MainLayout>
-        <div>Episodes</div>
+        <Box>
+          <Stack
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <EpisodesInfo />
+            <Pagination
+              count={3}
+              variant="outlined"
+              onChange={(event) => {
+                handleChange(event);
+              }}
+            />
+          </Stack>
+        </Box>
       </MainLayout>
-      {console.log(episodesData)}
     </>
   );
 };
