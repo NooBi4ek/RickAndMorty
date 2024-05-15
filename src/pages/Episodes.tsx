@@ -6,6 +6,7 @@ import {
   getPagesEpisodesDataServer,
 } from "../store/actions/episodesAction";
 import { Box, Pagination, Stack } from "@mui/material";
+import { getCountPages } from "../store/reducers/episodesReducer";
 import EpisodesInfo from "../components/EpisodesInfo";
 import { getCountPages } from "../store/reducers/episodesReducer";
 
@@ -42,8 +43,3 @@ const Episodes = () => {
           </Stack>
         </Box>
       </MainLayout>
-    </>
-  );
-};
-
-export default Episodes;
