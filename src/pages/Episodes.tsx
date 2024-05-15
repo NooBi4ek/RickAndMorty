@@ -1,12 +1,17 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MainLayout from "../layout/MainLayout";
 import { useEffect } from "react";
-import { getEpisodesDataServer } from "../store/actions/episodesAction";
+import {
+  getEpisodesDataServer,
+  getPagesEpisodesDataServer,
+} from "../store/actions/episodesAction";
 import { Box, Pagination, Stack } from "@mui/material";
 import EpisodesInfo from "../components/EpisodesInfo";
+import { getCountPages } from "../store/reducers/episodesReducer";
 
 const Episodes = () => {
   const dispatch = useDispatch();
+  const countPage = useSelector(getCountPages);
 
   const handleChange = (event: any) => {
     dispatch(getEpisodesDataServer(event.target.textContent));
@@ -14,6 +19,7 @@ const Episodes = () => {
 
   useEffect(() => {
     dispatch(getEpisodesDataServer("1"));
+    dispatch(getPagesEpisodesDataServer());
   }, []);
 
   return (
@@ -27,7 +33,7 @@ const Episodes = () => {
           >
             <EpisodesInfo />
             <Pagination
-              count={3}
+              count={countPage}
               variant="outlined"
               onChange={(event) => {
                 handleChange(event);

@@ -1,9 +1,11 @@
 export enum EpisodesActionTypes {
     GET_EPISODES_DATA_SERVER = "GET_EPISODES_DATA_SERVER",
+    GET_PAGES_EPISODES_DATA_SERVER = "GET_PAGES_EPISODES_DATA_SERVER",
     GET_CHARACTERS_DATA_SERVER = "GET_CHARACTERS_DATA_SERVER",
     OPEN_MODAL = "OPEN_MODAL",
     CLOSE_MODAL = "CLOSE_MODAL",
   }
+
 export const getEpisodesDataServer = (props:string) =>({
     type: EpisodesActionTypes.GET_EPISODES_DATA_SERVER,
     payload: {
@@ -14,6 +16,26 @@ export const getEpisodesDataServer = (props:string) =>({
     }
 })
 
+export const getPagesEpisodesDataServer = () =>({
+type:EpisodesActionTypes.GET_PAGES_EPISODES_DATA_SERVER,
+payload: {
+    request: {
+        method: "GET",
+        url: '/episode'
+    }
+}
+})
+
+export const getCharactersDataServer = (props:any) =>({
+    type:EpisodesActionTypes.GET_CHARACTERS_DATA_SERVER,
+    payload: {
+        request: {
+            method: "GET",
+            url: `/character/${props}`
+        }
+    }
+    })
+
 export const openModal = (props:number) =>({
     type: EpisodesActionTypes.OPEN_MODAL,
     payload: {
@@ -22,16 +44,6 @@ export const openModal = (props:number) =>({
             url: `/episode/${props}`
         }
     }
-})
-
-export const getCharactersDataServer = (props:any) =>({
-type:EpisodesActionTypes.GET_CHARACTERS_DATA_SERVER,
-payload: {
-    request: {
-        method: "GET",
-        url: `/character/${props}`
-    }
-}
 })
 
 export const closeModal = () =>({

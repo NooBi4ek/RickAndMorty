@@ -7,6 +7,7 @@ export interface EpisodesInitialType {
   episodesData: any;
   episodeData: any;
   modalCharactersData:any,
+  countPages: any,
   isLoading: boolean;
   openModal: boolean;
 }
@@ -15,6 +16,7 @@ const episodesInitialState: EpisodesInitialType = {
   episodesData: [],
   episodeData: [],
   modalCharactersData:[],
+  countPages:null,
   isLoading: false,
   openModal: false,
 };
@@ -23,7 +25,6 @@ export const episodesReducer = (state = episodesInitialState, action: any) => {
   switch (action.type) {
     case successAction(EpisodesActionTypes.GET_EPISODES_DATA_SERVER): {
       const data = action.payload.data.results;
-      console.log(data);
       return { ...state, episodesData: data };
     }
 
@@ -31,16 +32,20 @@ export const episodesReducer = (state = episodesInitialState, action: any) => {
       return { ...state, isLoading: true };
     }
 
-    case successAction(EpisodesActionTypes.OPEN_MODAL): {
-      const data = action.payload.data;
-
-      return {...state, openModal:true,episodeData: data};
+    case successAction(EpisodesActionTypes.GET_PAGES_EPISODES_DATA_SERVER): {
+      const data = action.payload.data.info.pages;
+      return {...state, countPages: data}
     }
 
     case successAction(EpisodesActionTypes.GET_CHARACTERS_DATA_SERVER): {
       const data = action.payload.data;
-      console.log(data);
       return {...state, modalCharactersData: data}
+    }
+
+    case successAction(EpisodesActionTypes.OPEN_MODAL): {
+      const data = action.payload.data;
+
+      return {...state, openModal:true,episodeData: data};
     }
 
     case EpisodesActionTypes.CLOSE_MODAL: {
@@ -63,3 +68,6 @@ export const getOpenModal = (state:RootReducer) =>
 
 export const getModalCharactersData = (state:RootReducer) =>
   state.episodes.modalCharactersData;
+
+export const getCountPages = (state:RootReducer) =>
+  state.episodes.countPages;
