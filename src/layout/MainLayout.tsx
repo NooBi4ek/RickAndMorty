@@ -9,7 +9,7 @@ interface Props {
 
 const MainLayout: FC<Props> = ({ children }) => {
   return (
-    <Stack minHeight="100vh">
+    <Stack minWidth="100vw" minHeight="100vh">
       <Header />
       {children}
       <Footer />

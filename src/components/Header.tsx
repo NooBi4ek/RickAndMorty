@@ -1,28 +1,16 @@
 import { Box, Stack, Typography } from "@mui/material";
+import React from "react";
 import { PageRoutes, pages } from "../router/types";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <Box
-      sx={{
-        backgroundColor: "#0D0D0D",
-        marginBottom: "20px",
-      }}
-    >
-      <Stack
-        sx={{
-          justifyContent: "center",
-          gap: "300px",
-          height: "100px",
-          flexDirection: "row",
-          alignItems: "center",
-        }}
-      >
+    <Box>
+      <Stack justifyContent="space-between" flexDirection="row">
         <Typography
           sx={{
             a: {
-              color: "#fff",
+              color: "#000",
               textDecoration: "none",
             },
           }}
@@ -32,7 +20,7 @@ const Header = () => {
         <Typography
           sx={{
             a: {
-              color: "#fff",
+              color: "#000",
               textDecoration: "none",
             },
           }}
@@ -42,7 +30,7 @@ const Header = () => {
         <Typography
           sx={{
             a: {
-              color: "#fff",
+              color: "#000",
               textDecoration: "none",
             },
           }}
