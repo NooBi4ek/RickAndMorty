@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useDispatch, useSelector } from "react-redux";
 import MainLayout from "../layout/MainLayout";
 import { useEffect } from "react";
@@ -9,6 +8,7 @@ import {
 import { Box, Pagination, Stack } from "@mui/material";
 import { getCountPages } from "../store/reducers/episodesReducer";
 import EpisodesInfo from "../components/EpisodesInfo";
+import { getCountPages } from "../store/reducers/episodesReducer";
 
 const Episodes = () => {
   const dispatch = useDispatch();
@@ -43,16 +43,3 @@ const Episodes = () => {
           </Stack>
         </Box>
       </MainLayout>
-=======
-import MainLayout from "../layout/MainLayout";
-
-const Episodes = () => {
-  return (
-    <>
-      <MainLayout />
->>>>>>> 0c16d32ed13a087223d2680dc4f9d8abc4613b32
-    </>
-  );
-};
-
-export default Episodes;

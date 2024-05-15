@@ -1,12 +1,14 @@
 import { createStore, applyMiddleware } from 'redux';
 import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
-import { rootReducer } from './reducers/rootReducer';
+
 import createSagaMiddleware from 'redux-saga';
-import rootSaga from './saga/rootSaga';
+
 import { options } from './axiosConfig';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { rootReducer } from './reducers/rootReducer';
+import rootSaga from './saga/rootSaga';
 
 const client = axios.create({
   baseURL: 'https://rickandmortyapi.com/api',
