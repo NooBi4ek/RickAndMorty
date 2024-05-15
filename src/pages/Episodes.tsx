@@ -18,8 +18,8 @@ const Episodes = () => {
   };
 
   useEffect(() => {
-    dispatch(getEpisodesDataServer("1"));
     dispatch(getPagesEpisodesDataServer());
+    dispatch(getEpisodesDataServer("1"));
   }, []);
 
   return (
