@@ -1,5 +1,6 @@
 export enum EpisodesActionTypes {
     GET_EPISODES_DATA_SERVER = "GET_EPISODES_DATA_SERVER",
+    GET_CHARACTERS_DATA_SERVER = "GET_CHARACTERS_DATA_SERVER",
     OPEN_MODAL = "OPEN_MODAL",
     CLOSE_MODAL = "CLOSE_MODAL",
   }
@@ -21,6 +22,16 @@ export const openModal = (props:number) =>({
             url: `/episode/${props}`
         }
     }
+})
+
+export const getCharactersDataServer = (props:any) =>({
+type:EpisodesActionTypes.GET_CHARACTERS_DATA_SERVER,
+payload: {
+    request: {
+        method: "GET",
+        url: `/character/${props}`
+    }
+}
 })
 
 export const closeModal = () =>({

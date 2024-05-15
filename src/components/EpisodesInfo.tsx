@@ -25,31 +25,43 @@ const EpisodesInfo = () => {
 
   return (
     <Box
-      sx={{ border: "1px solid #000", borderRadius: "5px", padding: "0 10px" }}
+      sx={{
+        border: "1px solid #E0E0E0",
+        borderRadius: "5px",
+        padding: "0 10px",
+        width: "600px",
+      }}
     >
-      {episodesData.map((episode: EpisodesItem) => (
+      {episodesData.map((element: EpisodesItem) => (
         <Stack
           sx={{
-            flexDirection: "column",
+            flexDirection: "row",
             gap: "20px",
-            borderBottom: "1px solid #000",
+            borderBottom: "1px solid #E0E0E0",
+            margin: "20px 10px",
+            userSelect: "none",
           }}
-          key={episode.id}
+          key={element.id}
         >
           <Avatar
             src={rickAndMorty}
             alt="R&M"
-            sx={{ width: "40px", height: "40px" }}
+            sx={{ width: "100px", height: "100px" }}
           />
-          <div>Name: {episode.name}</div>
-          <div>Date: {episode.air_date}</div>
-          <Button
-            onClick={() => {
-              handleOpen(episode.id);
-            }}
-          >
-            Test
-          </Button>
+          <Stack flexDirection="column" gap="20px">
+            <div>Name of episode: {element.name}</div>
+            <div>Number of episode: {element.episode}</div>
+            <div>Release date: {element.air_date}</div>
+            <Stack flexDirection="row">
+              <Button
+                onClick={() => {
+                  handleOpen(element.id);
+                }}
+              >
+                More info
+              </Button>
+            </Stack>
+          </Stack>
         </Stack>
       ))}
       {openPopup && <Modal open={openPopup} handleClose={handleClose} />}

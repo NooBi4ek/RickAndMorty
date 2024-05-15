@@ -6,6 +6,7 @@ import { RootReducer } from './rootReducer';
 export interface EpisodesInitialType {
   episodesData: any;
   episodeData: any;
+  modalCharactersData:any,
   isLoading: boolean;
   openModal: boolean;
 }
@@ -13,6 +14,7 @@ export interface EpisodesInitialType {
 const episodesInitialState: EpisodesInitialType = {
   episodesData: [],
   episodeData: [],
+  modalCharactersData:[],
   isLoading: false,
   openModal: false,
 };
@@ -31,8 +33,14 @@ export const episodesReducer = (state = episodesInitialState, action: any) => {
 
     case successAction(EpisodesActionTypes.OPEN_MODAL): {
       const data = action.payload.data;
-      console.log(data);
+
       return {...state, openModal:true,episodeData: data};
+    }
+
+    case successAction(EpisodesActionTypes.GET_CHARACTERS_DATA_SERVER): {
+      const data = action.payload.data;
+      console.log(data);
+      return {...state, modalCharactersData: data}
     }
 
     case EpisodesActionTypes.CLOSE_MODAL: {
@@ -52,3 +60,6 @@ export const getEpisodeData = (state:RootReducer) =>
 
 export const getOpenModal = (state:RootReducer) =>
   state.episodes.openModal;
+
+export const getModalCharactersData = (state:RootReducer) =>
+  state.episodes.modalCharactersData;
